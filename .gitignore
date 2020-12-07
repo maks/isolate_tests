@@ -7,3 +7,7 @@ build/
 
 # Directory created by dartdoc
 doc/api/
+
+#bins
+bin/*exe
+bin/*aot
