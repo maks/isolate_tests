@@ -1,10 +1,13 @@
 import 'dart:isolate';
 import 'dart:io';
 
-void worker(int id) {
+Future worker(int id) async {
   if (id % 100 == 0) {
     stdout.write('.');
   }
+  // Keep the workers alive to see memory impact of having N isolates alive at
+  // the same time.
+  await Future.delayed(const Duration(seconds: 5));
 }
 
 void main(List<String> arguments) async {
@@ -26,7 +29,7 @@ void printMemUsage() {
   print('RSS current:$currentRss max:$maxRss');
 }
 
-void spawn(int id) async {
+Future spawn(int id) async {
   // print('spawning a worker: $id');
   await Isolate.spawn(worker, id);
   // print('spawned an isolate');
