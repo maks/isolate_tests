@@ -5,7 +5,7 @@
 
 
 Compile using:
-`/usr/bin/dart --enable-isolate-groups compile aot-snapshot  bin/main.dart`
+`/usr/bin/dart compile aot-snapshot  bin/main.dart`
 
 
 ## Results:
@@ -14,7 +14,19 @@ run on: Dell 5400 Chromebook i7-8665U in a Debian10 Crostini container
 
 `Dart SDK version: 2.12.0-110.0.dev (dev) (Unknown timestamp) on "linux_x64")` 
 
+
+
+
+## The sleep1 test
+
+This test is intended to get a better idea of the improvements made in memory usage of Isolates as it places each spawned Isolate in a infinite loop with a 1 sec sleep between doing a trivial math task to provide some minimal workload for each Isolate.
+
+
+
+
 ### The dot basic test
+
+**NOTE:** This test is really only useful in looking at the speed at which Isolates can be spawned and the speed with which GC will reclaim memory, as each Isolate is very short lived.
 
 Baseline:
 ```

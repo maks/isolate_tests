@@ -9,5 +9,5 @@ build/
 doc/api/
 
 #bins
-bin/*exe
-bin/*aot
+bin/**/*exe
+bin/**/*aot
